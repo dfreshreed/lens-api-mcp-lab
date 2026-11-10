@@ -305,7 +305,7 @@ Type `exit` when you're done.
 `mcp_server_reads_schema.py` has 3 generic tools: read the schema, describe a type, run a read-only query. No device tools, no room logic, no hand-written Lens queries.
 
 ```bash
-LAB_SERVER=mcp_server_reads_schema.py python mcp_client_ai_picks.py "Which devices are offline? Show name, model and last seen."
+LAB_SERVER=mcp_server_reads_schema.py python mcp_client_ai_picks.py "Which devices have a linked peripheral that's offline? List up to 10, with the device, the peripheral and when it was last seen."
 ```
 
 **What happens:** watch the `[2]` lines:
@@ -315,6 +315,14 @@ LAB_SERVER=mcp_server_reads_schema.py python mcp_client_ai_picks.py "Which devic
 - If Lens answers with an error, the AI model reads it and fixes its query
 
 This works because GraphQL describes itself. A REST API without a published, machine-readable manual needs someone to build a tool for each feature before an AI model can use it.
+
+// Same Question, Tools Built for Lens
+
+```bash
+python mcp_client_ai_picks.py "Which devices have a linked peripheral that's offline? List up to 10, with the device, the peripheral and when it was last seen."
+```
+
+**What happens:** the AI model can use the `@mcp.tool def rooms()` tool, which already links each device to its peripherals. Compare the number of `[1]` lines with the run above.
 
 > ℹ️ **Note**
 > This step needs real Lens data. Sample data only answers the lab's own queries.
@@ -328,9 +336,10 @@ python mcp_client_ai_picks.py "Which rooms have devices on older firmware than o
 > ⚠️ **Rate Limit**
 > Each `[1]` line is one request through the lab gateway, about 20 per minute per seat. If you see `Lab gateway: Rate limit`, wait the seconds shown.
 
-**Checkpoint:** _Both servers answered. What does each one need from a developer, and when would you want each?_
+**Checkpoint:** The reads-schema server answered with no Lens code at all. So why build tools like `@mcp.tool def rooms()`?
+Speed, cost, consistent answers, and business rules the schema doesn’t know. Start generic; build tools where they pay off.
 
-|                   | TOOLS BUILT FOR LENS                     | READS THE SCHEMA                        |
+|                   | TOOLS BUILT FOR LENS                     | AI MODEL WRITES ITS OWN QUERIES         |
 | ----------------- | ---------------------------------------- | --------------------------------------- |
 | Developer work    | Write and maintain each tool             | None                                    |
 | Speed and cost    | Fewer steps, fewer AI requests           | More steps                              |
@@ -483,4 +492,4 @@ The lab gateway is switched off after the lab. To keep using Modules 4–5:
 | `Mock mode only supports...`                                | The AI model wrote its own query while using sample data | Expected; ask about rooms or devices instead                      |
 | `Unknown tool: offline_devices`                             | Module 3 exercise not done                               | Uncomment the 5 lines in `mcp_server_lens_tools.py`               |
 | `IndentationError` after Module 3                           | Spaces lost when uncommenting                            | The last two lines need exactly 4 spaces at the start             |
-| `Stopped after 8 steps`                                     | Question too broad                                       | Ask a narrower question                                           |
+| `Stopped after 12 steps`                                    | Question too broad                                       | Ask a narrower question                                           |
