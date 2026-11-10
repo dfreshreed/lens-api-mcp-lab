@@ -1,0 +1,8 @@
+.env
+__pycache__/
+gateway.env
+keys.csv
+seat_cards.html
+names.txt
+.venv/
+.DS_Store

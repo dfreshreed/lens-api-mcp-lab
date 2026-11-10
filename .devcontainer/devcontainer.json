@@ -1,0 +1,46 @@
+{
+  "name": "Poly Lens MCP Lab",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "postCreateCommand": "pip install -q --disable-pip-version-check -r requirements.txt && ([ -f .env ] || cp .env.example .env)",
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["LAB_GUIDE.md"]
+    },
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "bierner.markdown-mermaid",
+        "pkief.material-icon-theme",
+        "sdras.night-owl"
+      ],
+      "settings": {
+        "workbench.colorTheme": "Night Owl",
+        "workbench.iconTheme": "material-icon-theme",
+        "workbench.startupEditor": "none",
+        "workbench.tips.enabled": false,
+        "editor.fontFamily": "Dank Mono, SF Mono, Menlo, Monaco, 'Courier New', monospace",
+        "editor.fontSize": 15,
+        "editor.fontWeight": "400",
+        "editor.fontLigatures": true,
+        "editor.lineHeight": 1.5,
+        "editor.wordWrap": "on",
+        "editor.minimap.enabled": false,
+        "editor.renderWhitespace": "all",
+        "terminal.integrated.fontSize": 14,
+        "terminal.integrated.lineHeight": 1.25,
+        "terminal.integrated.defaultLocation": "view",
+        "terminal.integrated.fontFamily": "'Meslo LG M DZ for Powerline', Menlo, Consolas, 'Courier New', monospace",
+        "terminal.integrated.fontWeight": "normal",
+        "markdown.preview.fontSize": 15,
+        "files.exclude": { "**/__pycache__": true },
+        "chat.disableAIFeatures": true,
+        "chat.commandCenter.enabled": false,
+        "workbench.secondarySideBar.defaultVisibility": "hidden",
+        "github.copilot.enable": { "*": false },
+        "terminal.integrated.environmentChangesIndicator": "off",
+        "workbench.panel.defaultLocation": "right",
+        "python.analysis.typeCheckingMode": "off"
+      }
+    }
+  }
+}
