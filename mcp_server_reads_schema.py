@@ -24,7 +24,7 @@ from lens_api_helper import execute_gql  # only the connection: URL + login
 
 # -- config constants
 
-MAX_RESULT_CHARACTERS = 12000  # keep large answers from flooding the AI
+MAX_RESULT_CHARACTERS = 20000  # keep large answers from flooding the AI
 
 SCHEMA_OVERVIEW = """
 query SchemaOverview {
@@ -97,7 +97,16 @@ def run_query(query: str, variables: dict | None = None) -> str:
     If the API answers with errors, read them: they say which field or argument is wrong."""
     if query.lstrip().lower().startswith("mutation"):
         return "Rejected: this server is read-only."
-    return json.dumps(execute_gql(query, variables), indent=1)[:MAX_RESULT_CHARACTERS]
+    result_text = json.dumps(execute_gql(query, variables), indent=1)
+    if len(result_text) <= MAX_RESULT_CHARACTERS:
+        return result_text
+
+    # tell the AI model the result was cut, so it doesn't treat a partial list as complete
+    return (
+        result_text[:MAX_RESULT_CHARACTERS]
+        + f"\n[result cut at {MAX_RESULT_CHARACTERS:,} of {len(result_text):,} characters: "
+        "ask for fewer fields, add a filter, or use a smaller pageSize]"
+    )
 
 
 if __name__ == "__main__":
