@@ -59,7 +59,7 @@ API_KEY = os.getenv("LAB_LLM_API_KEY", "")
 MODEL = os.getenv(
     "LAB_MODEL", "lab-default"
 )  # the lab gateway always uses its own model
-MAX_STEPS = int(os.getenv("LAB_MAX_STEPS", "8"))  # AI model requests per question
+MAX_STEPS = int(os.getenv("LAB_MAX_STEPS", "12"))  # AI model requests per question
 HOST = os.getenv("LAB_HOST_NAME", "the lab host")  # who to ask for help
 SHOW_LEGEND = os.getenv("LAB_LEGEND", "1") != "0"
 MAX_TOOL_RESULT = 20000  # characters of each tool result sent to the AI model
