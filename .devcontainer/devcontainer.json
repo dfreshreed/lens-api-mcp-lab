@@ -18,6 +18,7 @@
         "workbench.iconTheme": "material-icon-theme",
         "workbench.startupEditor": "none",
         "workbench.tips.enabled": false,
+        "workbench.panel.defaultLocation": "right",
         "editor.fontFamily": "Dank Mono, SF Mono, Menlo, Monaco, 'Courier New', monospace",
         "editor.fontSize": 15,
         "editor.fontWeight": "400",
@@ -38,7 +39,6 @@
         "workbench.secondarySideBar.defaultVisibility": "hidden",
         "github.copilot.enable": { "*": false },
         "terminal.integrated.environmentChangesIndicator": "off",
-        "workbench.panel.defaultLocation": "right",
         "python.analysis.typeCheckingMode": "off"
       }
     }
