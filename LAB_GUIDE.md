@@ -577,14 +577,14 @@ The lab gateway is switched off after the lab. To keep using Modules 4–5:
 | VS Code offers to load `.env` into terminals                | Python extension prompt                                  | Select **Don't Show Again**; the lab reads `.env` itself          |
 | `Set LAB_LLM_API_KEY in .env`                               | `.env` not saved, or key on the wrong line               | Reopen `.env`, check `LAB_LLM_API_KEY=lab-...`, save              |
 | `Set LAB_LLM_BASE_URL in .env`                              | The gateway address is missing                           | Copy the `LAB_LLM_BASE_URL=` line from `.env.example` into `.env` |
-| `Your lab key was not accepted`                             | Typo, extra space or quotes                              | Copy your seat key from `seat-key.csv` again                      |
+| `Your lab key was not accepted`                             | Typo, extra space or quotes                              | Copy your seat key from `lab-keys.csv` again                      |
 | `Lab gateway: Rate limit...`                                | More than ~20 requests in a minute                       | Wait the seconds shown                                            |
 | `The lab gateway isn't answering (HTTP 502)`                | Gateway stopped or unreachable                           | Tell Daniel                                                       |
 | `The lab gateway is closed` / `AI budget is used up`        | Gateway switched off or budget reached                   | Tell Daniel                                                       |
 | `The model provider rejected the lab gateway` / `is busy`   | Problem between the gateway and the AI provider          | Tell Daniel; retry in a minute                                    |
 | `Can't reach the lab gateway`                               | Gateway not running, or the lab is over                  | During the lab: tell Daniel. After: use your own key              |
 | `POLY_LENS_CLIENT_ID / POLY_LENS_CLIENT_SECRET are not set` | Lens credential missing from `.env`                      | Add it, or set `LENS_MOCK=1`                                      |
-| `Lens didn't return a token`                                | Wrong client ID or secret                                | Copy both from `seat-key.csv` again                               |
+| `Lens didn't return a token`                                | Wrong client ID or secret                                | Copy both from `lab-keys.csv` again                               |
 | `Mock mode only supports...`                                | The AI model wrote its own query while using sample data | Expected; ask about rooms or devices instead                      |
 | `Unknown tool: offline_devices`                             | Module 3 exercise not done                               | Uncomment the 5 lines in `mcp_server_lens_tools.py`               |
 | `IndentationError` after Module 3                           | Spaces lost when uncommenting                            | The last two lines need exactly 4 spaces at the start             |
