@@ -82,7 +82,7 @@ All you need is a web browser and a **GitHub account** (a free personal account 
 
 ### Step 1: Open the Codespace
 
-- Open the link Daniel shared and sign in to GitHub if asked
+- [Click this link to access the Github Project](https://github.com/dfreshreed/lens-api-mcp-lab) and sign in to GitHub if asked
 - Wait 2–3 minutes, until the terminal on the right shows a prompt (`$`)
 
 **Why:** a Codespace is a ready-made computer in the cloud with everything installed, so nobody has to set up Python on a work laptop.
@@ -101,7 +101,7 @@ All you need is a web browser and a **GitHub account** (a free personal account 
 - **A Lens pass** (client ID + client secret), so it can retrieve device data from your Lens tenant. Everyone shares the same **read-only** pass: it can look, but Lens won't let it change anything
 - **An AI pass** (your seat key), so it can reach the AI model in Modules 4–5. Each person gets their own, so usage is counted per seat
 
-**Where to find them:** open `lab-keys.csv` [HPTRC » Poly Lens » /usr/share/lens-vault (bottom of page) » Poly Lens » 02-api](https://hp.sharepoint.com/:x:/t/PolyTechnicalResourceCenter/cQp1gbvOmPYaSJlvh8Ln51iDEgUCxnh-yk7Fm88L4s53xyePWw)
+**Where to find them:** a file open `lab-keys.csv` [HPTRC » Poly Lens » /usr/share/lens-vault (bottom of page) » Poly Lens » 02-api](https://hp.sharepoint.com/:x:/t/PolyTechnicalResourceCenter/cQp1gbvOmPYaSJlvh8Ln51iDEgUCxnh-yk7Fm88L4s53xyePWw)
 
 The `POLY_LENS_CLIENT_ID` and `POLY_LENS_CLIENT_SECRET` are at the top of the file. Your seat key is on the row with your name.
 
@@ -191,10 +191,10 @@ python lens_api_helper.py ops
 
 ### ⏩ Step 3: Ask for Exactly What You Want
 
-- Open `lens_api_helper.py` and find `DEVICE_FIELDS`
-- That list is the request: name, model, firmware, room... Lens returns only those fields
+- Select `lens_api_helper.py` from the file list, scroll down until you find `DEVICE_FIELDS`
+- That list is the request sent to the Lens API. name, model, firmware, room... Lens returns only those fields, even though 50+ fields are available
 
-**Why:** with GraphQL (the kind of API Lens uses), you ask for exactly the fields you need, in one request.
+**Why:** with GraphQL (the kind of API Lens uses), you ask for exactly the fields you want, in one request instead of multiple requests. Meaning, GraphQL saves your customer time and effort.
 
 **Checkpoint:** _Why does "the API describes itself" matter for an AI model?_
 
